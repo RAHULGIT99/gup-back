@@ -6,7 +6,15 @@ const path = require('path');
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+// Enable CORS for all origins
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: false
+}));
+
 app.use(express.json());
 
 const debug = (...args) => {
